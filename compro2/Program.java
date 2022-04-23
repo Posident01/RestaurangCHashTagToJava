@@ -12,7 +12,13 @@ public class Program
 {
 	public static void main(String[] args)
 	{
+		Dishes[] dishes = new Dishes[5];
 
+		dishes[0] = new Dishes("Rice Chiken",40);
+		dishes[1] = new Dishes("Khao mun kai",50);
+		dishes[2] = new Dishes("Kao ka moo",40);
+		dishes[3] = new Dishes("Noodle Ped",50);
+		dishes[4] = new Dishes("Pad ka prao",40);
 
 		boolean again = true, success;
 
@@ -21,23 +27,20 @@ public class Program
 		while (again)
 		{
 //			Console.encoding();
-			String[] menu = {"1.Rice Chiken.", "2.Khao mun kai.", "3.Kao ka moo.", "4.Noodle Ped", "5.Pad ka prao."};
 			int[] Price = {40, 50};
 			int money = 0;
 			int dish, bath = 0;
-			int order;
+			int order = 0;
 
 
 
-			// bool success;   // use for no error input
-			// success = Int32.TryParse(Console.ReadLine(), out select);   // input select
 
 			String[] user = {"Posident", "1234"};
 
 
 			String enter = ""; // not null
 
-			System.out.print("\n\tPlease Enter Your ID : ");
+			System.out.print("\n\t Please Enter Your ID : ");
 			enter = new Scanner(System.in).nextLine();
 
 
@@ -183,7 +186,7 @@ public class Program
 			System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
 			dish = Integer.parseInt(new Scanner(System.in).nextLine());
 
-			Class1.cal(dish, money, name, Price[bath]);
+			Class1.cal(dish, money, name, dishes[order].getPrice());
 
 
 			System.out.println("\n\t****************************");
@@ -192,9 +195,10 @@ public class Program
 			System.out.println("Do you want order agian");
 			System.out.println("1.Yes / 2.No ");
 
-			OutObject<Integer> tempOut_select = new OutObject<Integer>();
-			success = TryParseHelper.tryParseInt(new Scanner(System.in).nextLine(), tempOut_select); // input select
-		select = tempOut_select.outArgValue;
+//			OutObject<Integer> tempOut_select = new OutObject<Integer>();
+//			success = TryParseHelper.tryParseInt(new Scanner(System.in).nextLine(), tempOut_select); // input select
+
+			select = Integer.parseInt(new Scanner(System.in).nextLine());
 
 
 			int userInput = 1;
