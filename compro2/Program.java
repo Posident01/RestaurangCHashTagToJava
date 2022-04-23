@@ -5,6 +5,7 @@ import tangible.OutObject;
 import tangible.TryParseHelper;
 
 import java.io.Console;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Program
@@ -84,41 +85,100 @@ public class Program
 			//ฟังก์ชั่น เลือกเมนูอาหารและใส่ชื่อ**
 
 			System.out.println("\n\tWelcome to Restaurant.");
-			System.out.println("\n\t1.Rice Chiken 40 Baht \n\t2.Khao mun gai 50 Baht\n\t3.Kao pad moo 40 Baht\n\t4.Noodle Ped 50 Baht\n\t5.Pad Ka Prao 40 Baht\n\t6.Exit. ");
+
+//			System.out.println("\n\t1.Rice Chiken 40 Baht \n\t2.Khao mun gai 50 Baht\n\t3.Kao pad moo " +
+//					"40 Baht\n\t4.Noodle Ped 50 Baht\n\t5.Pad Ka Prao 40 Baht\n\t6.Exit. ");
+
+
+
+
 			System.out.print("\n\tEnter your name: ");
 			String name = new Scanner(System.in).nextLine();
-			System.out.print("\n\tHow Much Money Do You Have: ");
-			money = Integer.parseInt(new Scanner(System.in).nextLine());
-			System.out.print(String.format("\n\t%1$s please select order: ", name));
+
+			boolean check_money = true;
+
+			do {
+
+				System.out.print("\n\tHow Much Money Do You Have: ");
+
+				try {
+
+					money = Integer.parseInt(new Scanner(System.in).nextLine());
+
+					//===========================================================
+
+					check_money = false;
+
+				} catch (Exception e) {
+
+					System.out.println("\n\tBro I Say Let Select Money!!!!!!!!!!!!!!!!!");
+//					System.out.println(e);
+
+				}
+
+			} while (check_money == true);
 
 
-			order = Integer.parseInt(new Scanner(System.in).nextLine());
 
+			for (int i = 0; i < dishes.length ; i++) {
 
-			if (order == 6)
-			{
-				System.exit(0);
+				System.out.println("\t"+ (i+1) + "." + dishes[i].getName() + " " + dishes[i].getPrice() + " Baht");
+
 			}
-
-
-			System.out.println(String.format("\n\t%1$s have %2$s baht.", name, money));
+			System.out.println("\n\t0.Exit");
 
 
 
-			if (order == 1 || order == 3 || order == 5)
-			{
-				bath = 0; // Price = 40 Baht
-			}
+			boolean again_and_again = true;
 
-			else
-			{
-				bath = 1; // Price = 50 Baht
-			}
+			do {
 
-			order--;
+				System.out.print("\n\t" +name + " Please select order : ");
+
+				try {
+
+					order = Integer.parseInt(new Scanner(System.in).nextLine());
+
+					//===========================================================
+
+					again_and_again = false;
+
+				} catch (Exception e) {
+
+					System.out.println("\n\tYou Must Select Number Food!!!!!");
+
+				}
+
+			} while (again_and_again == true);
+
+
+
+				if (order == 0)
+				{
+					System.out.println("\n\tSee You Next Time BRO <3");
+					System.exit(0);
+
+				}
+
+				System.out.println("\n\t" + name + " have " + money + " baht");
+
+
+				if (order == 1 || order == 3 || order == 5)
+				{
+					bath = 0; // Price = 40 Baht
+				}
+
+				else
+				{
+					bath = 1; // Price = 50 Baht
+				}
+
+				order--;
+
 
 			//ฟังชั้น เลือกจาน**
-			System.out.printf("\n\t%3$s select %1$s this %2$s baht." + "\r\n", menu[order], Price[bath], name);
+
+			System.out.println("\n\t" + name + " Select " + dishes[order].getName() + " this " + dishes[order].getPrice() + " Bath. " );
 
 			System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
 			dish = Integer.parseInt(new Scanner(System.in).nextLine());
