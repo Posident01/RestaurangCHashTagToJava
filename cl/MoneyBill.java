@@ -2,7 +2,7 @@ package cl;
 
 import java.util.*;
 
-public class Class1
+public class MoneyBill
 {
 	public static void cal(int dish, int money, String name, int Price)
 	{
