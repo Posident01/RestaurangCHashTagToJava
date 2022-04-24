@@ -25,9 +25,9 @@ public class Restaurang
 		while (again)
 		{
 //			Console.encoding();
-			int[] Price = {40, 50};
+
 			int money = 0;
-			int dish, bath = 0;
+			int dish;
 			int order = 0;
 
 //			String[] user = {"Posident", "1234"};
@@ -79,15 +79,11 @@ public class Restaurang
 
 
 
-//			Console.encoding();
 			//ฟังก์ชั่น เลือกเมนูอาหารและใส่ชื่อ**
 
 			System.out.println("\n\tWelcome to Restaurant.");
 
-//			System.out.println("\n\t1.Rice Chiken 40 Baht \n\t2.Khao mun gai 50 Baht\n\t3.Kao pad moo " +
-//					"40 Baht\n\t4.Noodle Ped 50 Baht\n\t5.Pad Ka Prao 40 Baht\n\t6.Exit. ");
-
-
+			User user = new User();
 
 
 			System.out.print("\n\tEnter your name: ");  /// ใส่ชื่อ
@@ -115,6 +111,12 @@ public class Restaurang
 				}
 
 			} while (check_money == true);
+
+
+
+
+
+
 
 		//รายการเมนู
 
@@ -145,7 +147,9 @@ public class Restaurang
 
 				try {
 
-					order = Integer.parseInt(new Scanner(System.in).nextLine());
+					order = Integer.parseInt(new Scanner(System.in).nextLine()) - 1;
+
+					user.setDishe(dishes[order]);
 
 					//===========================================================
 
@@ -161,27 +165,21 @@ public class Restaurang
 
 
 
-				if (order == 0)
-				{
-					System.out.println("\n\tSee You Next Time BRO <3");
-					System.exit(0);
 
-				}
+
+//				if (order == 0)
+//				{
+//					System.out.println("\n\tSee You Next Time BRO <3");
+//					System.exit(0);
+//
+//				}
+
+
 
 				System.out.println("\n\t" + user.getName() + " have " + user.getMoney() + " baht");
 
 
-				if (order == 1 || order == 3 || order == 5)
-				{
-					bath = 0; // Price = 40 Baht
-				}
 
-				else
-				{
-					bath = 1; // Price = 50 Baht
-				}
-
-				order--;
 
 
 			//ฟังชั้น เลือกจาน**
@@ -284,5 +282,6 @@ public class Restaurang
 		} //while end
 
 	} // main end
+
 
 }
