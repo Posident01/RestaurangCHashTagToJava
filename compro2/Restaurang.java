@@ -173,12 +173,9 @@ public class Restaurang
 
 
 
-//				if (order == 0)
-//				{
-//					System.out.println("\n\tSee You Next Time BRO <3");
-//					System.exit(0);
-//
-//				}
+
+
+
 
 
 
@@ -284,7 +281,7 @@ public class Restaurang
 
 
 
-			System.exit(0);
+//			System.exit(0);
 		} //while end
 
 	} // main end
