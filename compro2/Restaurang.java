@@ -148,8 +148,13 @@ public class Restaurang
 				try {
 
 					order = Integer.parseInt(new Scanner(System.in).nextLine()) - 1;
-
+					if (order == -1)
+					{
+						System.out.println("\n\tSee You Next Time BRO <3");
+						System.exit(0);
+					}
 					user.setDishe(dishes[order]);
+
 
 					//===========================================================
 
@@ -160,6 +165,7 @@ public class Restaurang
 					System.out.println("\n\tYou Must Select Number Food!!!!!");
 
 				}
+
 
 			} while (again_and_again == true);
 
@@ -200,7 +206,7 @@ public class Restaurang
 					MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
 					//===========================================================
 
-					again_and_again = false;
+					dish_check = false;
 
 				} catch (Exception e) {
 
@@ -231,50 +237,50 @@ public class Restaurang
 
 		//ทำรายการอีกครั้งมั้ย
 
-//			System.out.println("\n\t****************************");
+			System.out.println("\n\t****************************");
+
+			//ฟังชั้น ทำซํ้าให้เข้าไป สั่งอาหารใหม่
+			System.out.println("Do you want order agian");
+			System.out.println("1.Yes / 2.No ");
+
+
+			select = Integer.parseInt(new Scanner(System.in).nextLine());
+
+
+			int userInput = 1;
+			while (userInput != 0)
+			{
+
+
+				if (select == 1)
+				{
+					userInput--;
+					again = true;
+//					Console.encoding();
+				}
+
+				else if (select == 2)
+				{
+					userInput--;
+					again = false;
+
+					System.out.println("Thank you for using the service.");
+
+				}
+
+				else
+				{
+					System.out.println("You Must Select 1 Or 2 Only");
+					System.out.println("Do you want order agian");
+					System.out.println("1.Yes / 2.No ");
+
+					OutObject<Integer> tempOut_select2 = new OutObject<Integer>();
+					success = TryParseHelper.tryParseInt(new Scanner(System.in).nextLine(), tempOut_select2); // input select
+				select = tempOut_select2.outArgValue;
+				}
 //
-//			//ฟังชั้น ทำซํ้าให้เข้าไป สั่งอาหารใหม่
-//			System.out.println("Do you want order agian");
-//			System.out.println("1.Yes / 2.No ");
-//
-//
-//			select = Integer.parseInt(new Scanner(System.in).nextLine());
-//
-//
-//			int userInput = 1;
-//			while (userInput != 0)
-//			{
-//
-//
-//				if (select == 1)
-//				{
-//					userInput--;
-//					again = true;
-////					Console.encoding();
-//				}
-//
-//				else if (select == 2)
-//				{
-//					userInput--;
-//					again = false;
-//
-//					System.out.println("Thank you for using the service.");
-//
-//				}
-//
-//				else
-//				{
-//					System.out.println("You Must Select 1 Or 2 Only");
-//					System.out.println("Do you want order agian");
-//					System.out.println("1.Yes / 2.No ");
-//
-//					OutObject<Integer> tempOut_select2 = new OutObject<Integer>();
-//					success = TryParseHelper.tryParseInt(new Scanner(System.in).nextLine(), tempOut_select2); // input select
-//				select = tempOut_select2.outArgValue;
-//				}
-////
-//
-//			} // while select end
+
+			} // while select end
 
 
 

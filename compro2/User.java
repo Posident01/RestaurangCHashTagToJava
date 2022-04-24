@@ -1,5 +1,8 @@
 package compro2;
 
+import Exception.*;
+import java.util.Scanner;
+
 
 public class User {
 
