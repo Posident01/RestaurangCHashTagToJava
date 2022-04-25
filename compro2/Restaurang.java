@@ -1,13 +1,18 @@
 package compro2;
 
-import cl.*;
+import cl.MoneyBill;
 import tangible.OutObject;
 import tangible.TryParseHelper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class Restaurang
 {
+
+
 	public static void main(String[] args)
 	{
 		Dishes[] dishes = new Dishes[5];
@@ -30,52 +35,52 @@ public class Restaurang
 			int dish;
 			int order = 0;
 
-//			String[] user = {"Posident", "1234"};
-//
-//
-//			String enter = ""; // not null
-//
-//			System.out.print("\n\t Please Enter Your ID : ");
-//			enter = new Scanner(System.in).nextLine();
-//
-//
-//			while (true)
-//			{
-//
-//				if (user[0].equals(enter))
-//				{
-//					break; // exsit loop
-//				}
-//
-//				else
-//				{ // กรอกผิด
-//					System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
-//					System.out.print("\n\tPlease Enter Your ID : ");
-//					enter = new Scanner(System.in).nextLine();
-//				}
-//
-//			}
-//
-//
-//			System.out.print("\n\tPlease Enter Your Password : ");
-//			enter = new Scanner(System.in).nextLine();
-//
-//			while (true)
-//			{
-//
-//				if (user[1].equals(enter))
-//				{
-//					break; // exsit loop
-//				}
-//
-//				else
-//				{
-//					System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
-//					System.out.print("\n\tPlease Enter Your Password : ");
-//					enter = new Scanner(System.in).nextLine();
-//				}
-//
-//			}
+			String[] User = {"Posident", "1234"};
+
+
+			String enter = ""; // not null
+
+			System.out.print("\n\t Please Enter Your ID : ");
+			enter = new Scanner(System.in).nextLine();
+
+
+			while (true)
+			{
+
+				if (User[0].equals(enter))
+				{
+					break; // exsit loop
+				}
+
+				else
+				{ // กรอกผิด
+					System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
+					System.out.print("\n\tPlease Enter Your ID : ");
+					enter = new Scanner(System.in).nextLine();
+				}
+
+			}
+
+
+			System.out.print("\n\tPlease Enter Your Password : ");
+			enter = new Scanner(System.in).nextLine();
+
+			while (true)
+			{
+
+				if (User[1].equals(enter))
+				{
+					break; // exsit loop
+				}
+
+				else
+				{
+					System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
+					System.out.print("\n\tPlease Enter Your Password : ");
+					enter = new Scanner(System.in).nextLine();
+				}
+
+			}
 
 
 
@@ -190,17 +195,35 @@ public class Restaurang
 
 			System.out.println("\n\t" + user.getName() + " Select " + user.getDishe().getName() + " this " + user.getDishe().getPrice() + " Bath. " );
 
+
+
+			List<Dishes>  Disheslist = new ArrayList<>();
+
 			boolean dish_check = true;
 
 			do {
+				//System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
+				List<String> Dishes = new ArrayList<>(Collections.singleton("\n\tHow Many Dishes Would You Like To Order? "));
 
-				System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
+				for (String s : Dishes) {
+					System.out.println(s);
+
+				}
+
 
 				try {
 
-					user.setNum_dishes(Integer.parseInt(new Scanner(System.in).nextLine()));
+
+						//your for-loop code here
+						user.setNum_dishes(Integer.parseInt(new Scanner(System.in).nextLine()));
+
+
+
+
 
 					MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
+
+
 					//===========================================================
 
 					dish_check = false;

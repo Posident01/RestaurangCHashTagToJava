@@ -2,7 +2,8 @@ package compro2;
 
 import Exception.*;
 import java.util.Scanner;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -13,6 +14,13 @@ public class User {
 
     private Dishes dishe = null;
     private int num_dishes = 0;
+
+    private List<Dishes>  Disheslist = new ArrayList<>();
+
+    public void addMenuList (Dishes menu) {
+        Disheslist.add(menu);
+    }
+
 
 
     public User()
@@ -57,6 +65,9 @@ public String getName(){
 
     public void setNum_dishes(int num_dishes) {
         this.num_dishes = num_dishes;
+    }
+    public List<Dishes> getDisheslist(){
+        return this.getDisheslist();
     }
 
 
