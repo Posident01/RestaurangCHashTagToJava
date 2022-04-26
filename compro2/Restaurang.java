@@ -4,6 +4,7 @@ import cl.MoneyBill;
 import tangible.OutObject;
 import tangible.TryParseHelper;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,18 +17,24 @@ public class Restaurang
 	public static void main(String[] args)
 	{
 		Dishes[] dishes = new Dishes[5];
-
 		dishes[0] = new Dishes("Rice Chiken",60);
 		dishes[1] = new Dishes("Khao mun kai",50);
 		dishes[2] = new Dishes("Kao ka moo",45);
 		dishes[3] = new Dishes("Noodle Ped",65);
 		dishes[4] = new Dishes("Pad ka prao",50);
 
+		Drink[] drinks = new Drink[4];
+		drinks[0] = new Drink("Coke",25);
+		drinks[1] =new Drink("Green Tea",30);
+		drinks[2] =new Drink("Milk Tea",35);
+		drinks[3] =new Drink("Black Tea",40);
+
+
 		boolean again = true, success;
 
 		int select;
 
-		while (again)
+		//while (again)
 		{
 //			Console.encoding();
 
@@ -64,6 +71,7 @@ public class Restaurang
 
 			System.out.print("\n\tPlease Enter Your Password : ");
 			enter = new Scanner(System.in).nextLine();
+
 
 			while (true)
 			{
@@ -130,6 +138,9 @@ public class Restaurang
 				System.out.println("\t"+ (i+1) + "." + dishes[i].getName() + " " + dishes[i].getPrice() + " Baht");
 
 			}
+
+
+
 			System.out.println("\n\t0.Exit");
 
 
@@ -197,16 +208,22 @@ public class Restaurang
 
 
 
-			List<Dishes>  Disheslist = new ArrayList<>();
+
+
+
+
+
+
 
 			boolean dish_check = true;
 
 			do {
 				//System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
-				List<String> Dishes = new ArrayList<>(Collections.singleton("\n\tHow Many Dishes Would You Like To Order? "));
+				List<String> Dishes = new ArrayList<>(Collections.singleton("\n\tHow Many Dishes Would You Like To Order? : "));
+
 
 				for (String s : Dishes) {
-					System.out.println(s);
+					System.out.println(s.toString());
 
 				}
 
@@ -221,7 +238,7 @@ public class Restaurang
 
 
 
-					MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
+					//MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
 
 
 					//===========================================================
@@ -237,11 +254,13 @@ public class Restaurang
 			} while (dish_check == true);
 
 
-			//System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
-			//dish = Integer.parseInt(new Scanner(System.in).nextLine());
+//			System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
+//			dish = Integer.parseInt(new Scanner(System.in).nextLine());
 
+			//System.out.println("\n\t****************************");
 
-
+//			System.out.println("You Want Order drink");
+//			System.out.println("1.Yes / 2.No ");
 
 
 
@@ -305,9 +324,9 @@ public class Restaurang
 
 
 //			System.exit(0);
+
 		} //while end
 
 	} // main end
-
 
 }

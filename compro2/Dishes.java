@@ -1,14 +1,18 @@
 package compro2;
 
-public class Dishes {
+public class Dishes  {
 
     private String name = "";
-    private int price = 0;
+    int price = 0;
 
     public Dishes(String name, int price) {
 
         this.name = name;
         this.price = price;
+    }
+
+    public Dishes() {
+
     }
 
     public String getName() {
@@ -18,9 +22,6 @@ public class Dishes {
     public int getPrice() {
         return this.price;
     }
-
-
-
 
 
 }

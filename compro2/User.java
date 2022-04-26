@@ -70,6 +70,19 @@ public String getName(){
         return this.getDisheslist();
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "keyboard=" + keyboard +
+                ", name='" + name + '\'' +
+                ", money=" + money +
+                ", dishe=" + dishe +
+                ", num_dishes=" + num_dishes +
+                ", Disheslist=" + Disheslist +
+                '}';
+    }
+
+
 
     public int selection() {
 

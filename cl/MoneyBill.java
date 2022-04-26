@@ -37,6 +37,7 @@ public class MoneyBill
 
 
 	public static void somthing(int dish, int money, String name, int Price) {
+
 		int total;
 		total = money - dish * Price;
 		System.out.printf("\n\t%2$s pay %1$s Baht." + "\r\n", money, name);
@@ -49,6 +50,7 @@ public class MoneyBill
 		System.out.printf("\n\t%2$s Get %1$s Ten coin Baht." + "\r\n", total % 1000 % 500 % 100 % 50 % 20 / 10, name);
 		System.out.printf("\n\t%2$s Get %1$s Five coin Baht." + "\r\n", total % 1000 % 500 % 100 % 50 % 20 % 10 / 5, name);
 		System.out.printf("\n\t%2$s Get %1$s One coin Baht." + "\r\n", total % 1000 % 500 % 100 % 50 % 20 % 10 % 5, name);
+
 
 	}
 }
