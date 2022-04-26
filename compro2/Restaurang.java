@@ -1,96 +1,38 @@
 package compro2;
 
-import cl.MoneyBill;
-import tangible.OutObject;
-import tangible.TryParseHelper;
+import compro2.Food.*;
+import Exception.*;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Restaurang
 {
 
+	private static Scanner keyboard = new Scanner(System.in);
+	private static Syster sys = new Syster();
 
-	public static void main(String[] args)
+	private static SysterList sysList = new SysterList();
+
+
+
+	public static void main(String[] args) throws IndexTooLowException, IndexTooHighException
 	{
-		Dishes[] dishes = new Dishes[5];
-		dishes[0] = new Dishes("Rice Chiken",60);
-		dishes[1] = new Dishes("Khao mun kai",50);
-		dishes[2] = new Dishes("Kao ka moo",45);
-		dishes[3] = new Dishes("Noodle Ped",65);
-		dishes[4] = new Dishes("Pad ka prao",50);
 
-		Drink[] drinks = new Drink[4];
-		drinks[0] = new Drink("Coke",25);
-		drinks[1] =new Drink("Green Tea",30);
-		drinks[2] =new Drink("Milk Tea",35);
-		drinks[3] =new Drink("Black Tea",40);
+		List<Dishes> dishesList = sysList.loadFood("dishes");
+
+		List<Dishes> drinksList = sysList.loadFood("dishes");
 
 
-		boolean again = true, success;
 
-		int select;
 
-		//while (again)
+		boolean again = true;
+		String select;
+
+		while (again)
 		{
-//			Console.encoding();
 
-			int money = 0;
-			int dish;
-			int order = 0;
-
-			String[] User = {"Posident", "1234"};
-
-
-			String enter = ""; // not null
-
-			System.out.print("\n\t Please Enter Your ID : ");
-			enter = new Scanner(System.in).nextLine();
-
-
-			while (true)
-			{
-
-				if (User[0].equals(enter))
-				{
-					break; // exsit loop
-				}
-
-				else
-				{ // กรอกผิด
-					System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
-					System.out.print("\n\tPlease Enter Your ID : ");
-					enter = new Scanner(System.in).nextLine();
-				}
-
-			}
-
-
-			System.out.print("\n\tPlease Enter Your Password : ");
-			enter = new Scanner(System.in).nextLine();
-
-
-			while (true)
-			{
-
-				if (User[1].equals(enter))
-				{
-					break; // exsit loop
-				}
-
-				else
-				{
-					System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
-					System.out.print("\n\tPlease Enter Your Password : ");
-					enter = new Scanner(System.in).nextLine();
-				}
-
-			}
-
-
+//			logIn(); <--
 
 			//ฟังก์ชั่น เลือกเมนูอาหารและใส่ชื่อ**
 
@@ -100,98 +42,67 @@ public class Restaurang
 
 
 			System.out.print("\n\tEnter your name: ");  /// ใส่ชื่อ
-			user.setName(new Scanner(System.in).nextLine());
+			user.setName(keyboard.nextLine());
 
-
-			boolean check_money = true;
-
-			do {
-
-				System.out.print("\n\tHow Much Money Do You Have: ");
-
-				try {
-
-					user.setMoney(Integer.parseInt(new Scanner(System.in).nextLine()));
-					//===========================================================
-
-					check_money = false;
-
-				} catch (Exception e) {
-
-					System.out.println("\n\tBro I Say Let Select Money!!!!!!!!!!!!!!!!!");
-//					System.out.println(e);
-
-				}
-
-			} while (check_money == true);
-
-
-
-
-
+			user.setMoney(sys.selection("\n\tHow Much Money Do You Have: "
+					,"\n\tBro I Say Let Select Money!!!!!!!!!!!!!!!!!"));
 
 
 		//รายการเมนู
 
-			for (int i = 0; i < dishes.length ; i++) {
+			String con; //
 
-				System.out.println("\t"+ (i+1) + "." + dishes[i].getName() + " " + dishes[i].getPrice() + " Baht");
+			do
+			{
+				for (int i = 0; i < dishesList.size(); i++) {
 
-			}
-
-
-
-			System.out.println("\n\t0.Exit");
-
-
-
-
-
-
-
-
-
-
-
-			// เลือก ออเดอร์
-
-			boolean again_and_again = true;
-
-			do {
-
-				System.out.print("\n\t" + user.getName() + " Please select order : ");
-
-				try {
-
-					order = Integer.parseInt(new Scanner(System.in).nextLine()) - 1;
-					if (order == -1)
-					{
-						System.out.println("\n\tSee You Next Time BRO <3");
-						System.exit(0);
-					}
-					user.setDishe(dishes[order]);
-
-
-					//===========================================================
-
-					again_and_again = false;
-
-				} catch (Exception e) {
-
-					System.out.println("\n\tYou Must Select Number Food!!!!!");
+					System.out.println("\t" + (i + 1) + "." + dishesList.get(i).getName()
+							+ " " + dishesList.get(i).getPrice() + " Baht");
 
 				}
 
 
-			} while (again_and_again == true);
+				System.out.println("\n\t0.Exit");
+
+
+				// เลือก ออเดอร์
+
+				user.setSelection(sysList.selection("\n\t" + user.getName() + " Please select order : "
+						, "\n\tYou Must Select Number Food!!!!!"
+						, dishesList));
+
+
+				if (user.getSelection() == -1) {
+					System.out.println("\n\tSee You Next Time BRO <3");
+					System.exit(0);
+				}
+
+				else
+				{
+					user.addDishesList(dishesList.get(user.getSelection()));
+					user.setBill(user.getBill()+dishesList.get(user.getSelection()).getPrice());
+
+				}
+
+				System.out.println("\n\tYour order have : ");
+
+				for (int i = 0; i < user.getDisheslist().size(); i++) {
+
+					System.out.println("\t" + (i + 1) + "." + user.getDisheslist().get(i).getName()
+							+ " " + user.getDisheslist().get(i).getPrice() + " Baht");
+
+				}
+
+				System.out.println("\tThat will be "+user.getBill()+" Baht");
+
+				System.out.println();
+				System.out.print("\tDo You Want Add More?? [Y/N] :");
+				con = String.valueOf(new Scanner(System.in).nextLine());
 
 
 
-
-
-
-
-
+			} while (con.equals("Y") || con.equals("y"));
+			//ฟังชั้น เลือกจาน**
 
 
 
@@ -201,61 +112,8 @@ public class Restaurang
 
 
 
-			//ฟังชั้น เลือกจาน**
 
 
-			System.out.println("\n\t" + user.getName() + " Select " + user.getDishe().getName() + " this " + user.getDishe().getPrice() + " Bath. " );
-
-
-
-
-
-
-
-
-
-
-			boolean dish_check = true;
-
-			do {
-				//System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
-				List<String> Dishes = new ArrayList<>(Collections.singleton("\n\tHow Many Dishes Would You Like To Order? : "));
-
-
-				for (String s : Dishes) {
-					System.out.println(s.toString());
-
-				}
-
-
-				try {
-
-
-						//your for-loop code here
-						user.setNum_dishes(Integer.parseInt(new Scanner(System.in).nextLine()));
-
-
-
-
-
-					//MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
-
-
-					//===========================================================
-
-					dish_check = false;
-
-				} catch (Exception e) {
-
-					System.out.println("\n\tHey Man I Say !!! Enter A Number Dish!!!!!!!! ");
-
-				}
-
-			} while (dish_check == true);
-
-
-//			System.out.print("\n\tHow Many Dishes Would You Like To Order? ");
-//			dish = Integer.parseInt(new Scanner(System.in).nextLine());
 
 			//System.out.println("\n\t****************************");
 
@@ -279,11 +137,11 @@ public class Restaurang
 			System.out.println("\n\t****************************");
 
 			//ฟังชั้น ทำซํ้าให้เข้าไป สั่งอาหารใหม่
-			System.out.println("Do you want order agian");
-			System.out.println("1.Yes / 2.No ");
+			System.out.println("\tDo you want order agian");
+			System.out.println("\t1.Yes / 2.No ");
 
 
-			select = Integer.parseInt(new Scanner(System.in).nextLine());
+			select = keyboard.next();
 
 
 			int userInput = 1;
@@ -291,19 +149,19 @@ public class Restaurang
 			{
 
 
-				if (select == 1)
+				if (select.equals("1"))
 				{
 					userInput--;
 					again = true;
 //					Console.encoding();
 				}
 
-				else if (select == 2)
+				else if (select.equals("2"))
 				{
 					userInput--;
 					again = false;
 
-					System.out.println("Thank you for using the service.");
+					System.out.println("\tThank you for using the service.");
 
 				}
 
@@ -311,11 +169,9 @@ public class Restaurang
 				{
 					System.out.println("You Must Select 1 Or 2 Only");
 					System.out.println("Do you want order agian");
-					System.out.println("1.Yes / 2.No ");
+					System.out.println("1	.Yes / 2.No ");
+					select = keyboard.nextLine();
 
-					OutObject<Integer> tempOut_select2 = new OutObject<Integer>();
-					success = TryParseHelper.tryParseInt(new Scanner(System.in).nextLine(), tempOut_select2); // input select
-				select = tempOut_select2.outArgValue;
 				}
 //
 
@@ -328,5 +184,68 @@ public class Restaurang
 		} //while end
 
 	} // main end
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static void logIn()
+	{
+		String[] User = {"Posident", "1234"};
+
+		System.out.print("\n\t Please Enter Your ID : ");
+
+
+		String enter = new Scanner(System.in).nextLine();
+
+
+		while (true)
+		{
+
+			if (User[0].equals(enter))
+			{
+				break; // exit loop
+			}
+
+			else
+			{ // กรอกผิด
+				System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
+				System.out.print("\n\tPlease Enter Your ID : ");
+				enter = new Scanner(System.in).nextLine();
+			}
+
+		}
+
+		System.out.print("\n\tPlease Enter Your Password : ");
+		enter = new Scanner(System.in).nextLine();
+
+		while (true)
+		{
+
+			if (User[1].equals(enter))
+			{
+				break; // exsit loop
+			}
+
+			else
+			{
+				System.out.println("\n\tThe ID and password are entered incorrectly. Please enter again ");
+				System.out.print("\n\tPlease Enter Your Password : ");
+				enter = new Scanner(System.in).nextLine();
+			}
+
+		}
+
+	}
+
+
 
 }

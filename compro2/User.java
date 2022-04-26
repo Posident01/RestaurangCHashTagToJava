@@ -1,6 +1,8 @@
 package compro2;
 
 import Exception.*;
+import compro2.Food.Dishes;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +16,29 @@ public class User {
 
     private Dishes dishe = null;
     private int num_dishes = 0;
+    private int Bill = 0;
 
-    private List<Dishes>  Disheslist = new ArrayList<>();
+    public int getBill() {
+        return Bill;
+    }
 
-    public void addMenuList (Dishes menu) {
-        Disheslist.add(menu);
+    public void setBill(int bill) {
+        Bill = bill;
+    }
+
+
+
+
+
+
+
+    private int selection = -1;
+    public int getSelection() {
+        return selection;
+    }
+
+    public void setSelection(int selection) {
+        this.selection = selection;
     }
 
 
@@ -66,9 +86,6 @@ public String getName(){
     public void setNum_dishes(int num_dishes) {
         this.num_dishes = num_dishes;
     }
-    public List<Dishes> getDisheslist(){
-        return this.getDisheslist();
-    }
 
     @Override
     public String toString() {
@@ -81,7 +98,6 @@ public String getName(){
                 ", Disheslist=" + Disheslist +
                 '}';
     }
-
 
 
     public int selection() {
@@ -165,6 +181,22 @@ public String getName(){
 
 
     }
+
+
+    private List<Dishes>  Disheslist = new ArrayList<>();
+
+    public List<Dishes> getDisheslist(){
+        return this.Disheslist;
+    }
+
+    public void addDishesList (Dishes menu) {
+        Disheslist.add(menu);
+    }
+
+
+
+
+
 
 }
 

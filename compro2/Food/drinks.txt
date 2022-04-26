@@ -1,0 +1,4 @@
+Coke,25
+Green Tea,30
+Black Tea,40
+Milk Tea,35

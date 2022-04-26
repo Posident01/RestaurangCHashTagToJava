@@ -1,4 +1,4 @@
-package compro2;
+package compro2.Food;
 
 
 public class Drink extends Dishes{
@@ -16,6 +16,11 @@ public class Drink extends Dishes{
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
