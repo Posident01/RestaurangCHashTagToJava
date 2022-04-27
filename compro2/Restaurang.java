@@ -25,9 +25,9 @@ public class Restaurang
 
 		Drink[] drinks = new Drink[4];
 		drinks[0] = new Drink("Coke",25);
-		drinks[1] =new Drink("Green Tea",30);
-		drinks[2] =new Drink("Milk Tea",35);
-		drinks[3] =new Drink("Black Tea",40);
+		drinks[1] = new Drink("Green Tea",30);
+		drinks[2] = new Drink("Milk Tea",35);
+		drinks[3] = new Drink("Black Tea",40);
 
 
 		boolean again = true, success;
@@ -91,7 +91,6 @@ public class Restaurang
 			}
 
 
-
 			//ฟังก์ชั่น เลือกเมนูอาหารและใส่ชื่อ**
 
 			System.out.println("\n\tWelcome to Restaurant.");
@@ -126,11 +125,6 @@ public class Restaurang
 			} while (check_money == true);
 
 
-
-
-
-
-
 		//รายการเมนู
 
 			for (int i = 0; i < dishes.length ; i++) {
@@ -142,15 +136,6 @@ public class Restaurang
 
 
 			System.out.println("\n\t0.Exit");
-
-
-
-
-
-
-
-
-
 
 
 			// เลือก ออเดอร์
@@ -186,32 +171,13 @@ public class Restaurang
 			} while (again_and_again == true);
 
 
-
-
-
-
-
-
-
-
-
 				System.out.println("\n\t" + user.getName() + " have " + user.getMoney() + " baht");
-
-
-
 
 
 			//ฟังชั้น เลือกจาน**
 
 
 			System.out.println("\n\t" + user.getName() + " Select " + user.getDishe().getName() + " this " + user.getDishe().getPrice() + " Bath. " );
-
-
-
-
-
-
-
 
 
 
@@ -238,7 +204,7 @@ public class Restaurang
 
 
 
-					//MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
+					MoneyBill.cal(user.getNum_dishes(), user.getMoney(), user.getName(), user.getDishe().getPrice());
 
 
 					//===========================================================
@@ -261,15 +227,6 @@ public class Restaurang
 
 //			System.out.println("You Want Order drink");
 //			System.out.println("1.Yes / 2.No ");
-
-
-
-
-
-
-
-
-
 
 
 
