@@ -21,7 +21,7 @@ public class Restaurang
 
 		List<Dishes> dishesList = sysList.loadFood("dishes");
 
-		List<Dishes> drinksList = sysList.loadFood("dishes");
+		List<Drink> drinksList = sysList.loadDrink("drinks");
 
 
 
@@ -105,6 +105,58 @@ public class Restaurang
 			//ฟังชั้น เลือกจาน**
 
 
+			con = "y";
+
+			do
+			{
+				for (int i = 0; i < drinksList.size(); i++) {
+
+					System.out.println("\t" + (i + 1) + "." + drinksList.get(i).getName()
+							+ " " + drinksList.get(i).getPrice() + " Baht");
+
+				}
+
+
+				System.out.println("\n\t0.Exit");
+
+
+				// เลือก ออเดอร์
+
+				user.setSelection(sysList.selectionDrink("\n\t" + user.getName() + " Please select order : "
+						, "\n\tYou Must Select Number Food!!!!!"
+						, drinksList));
+
+
+				if (user.getSelection() == -1) {
+					System.out.println("\n\tSee You Next Time BRO <3");
+					System.exit(0);
+				}
+
+				else
+				{
+					user.addlistDrink( drinksList.get(user.getSelection()));
+					user.setBill(user.getBill()+drinksList.get(user.getSelection()).getPrice());
+
+				}
+
+				System.out.println("\n\tYour order have : ");
+
+				for (int i = 0; i < user.getlistDrink().size(); i++) {
+
+					System.out.println("\t" + (i + 1) + "." + user.getlistDrink().get(i).getName()
+							+ " " + user.getlistDrink().get(i).getPrice() + " Baht");
+
+				}
+
+				System.out.println("\tThat will be "+user.getBill()+" Baht");
+
+				System.out.println();
+				System.out.print("\tDo You Want Add More?? [Y/N] :");
+				con = String.valueOf(new Scanner(System.in).nextLine());
+
+
+
+			} while (con.equals("Y") || con.equals("y"));
 
 				System.out.println("\n\t" + user.getName() + " have " + user.getMoney() + " baht");
 

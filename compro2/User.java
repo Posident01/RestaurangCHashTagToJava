@@ -2,6 +2,7 @@ package compro2;
 
 import Exception.*;
 import compro2.Food.Dishes;
+import compro2.Food.Drink;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -193,14 +194,15 @@ public String getName(){
         Disheslist.add(menu);
     }
 
-    private List<Drink>  Drinkslist = new ArrayList<>();
 
-    public List<Drink> getDrinkslist(){
-        return this.Drinkslist;
+    private List<Drink>  listDrink = new ArrayList<>();
+
+    public List<Drink> getlistDrink(){
+        return this.listDrink;
     }
 
-    public void addDrinksList (Drink menu) {
-        Drinkslist.add(menu);
+    public void addlistDrink (Drink menu) {
+        listDrink.add(menu);
     }
 
 
