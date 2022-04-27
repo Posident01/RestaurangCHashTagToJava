@@ -21,7 +21,7 @@ public class Restaurang
 
 		List<Dishes> dishesList = sysList.loadFood("dishes");
 
-		List<Dishes> drinksList = sysList.loadFood("dishes");
+		List<Dishes> drinksList = sysList.loadFood("drinks");
 
 
 
@@ -96,7 +96,7 @@ public class Restaurang
 				System.out.println("\tThat will be "+user.getBill()+" Baht");
 
 				System.out.println();
-				System.out.print("\tDo You Want Add More?? [Y/N] :");
+				System.out.print("\tDo You Want Add Dishes More?? [Y/N] :");
 				con = String.valueOf(new Scanner(System.in).nextLine());
 
 
@@ -115,11 +115,66 @@ public class Restaurang
 
 
 
-			//System.out.println("\n\t****************************");
+			System.out.println("\n\t****************************");
 
 //			System.out.println("You Want Order drink");
 //			System.out.println("1.Yes / 2.No ");
 
+			//รายการเมนู
+
+
+
+			do
+			{
+				for (int i = 0; i < drinksList.size(); i++) {
+
+					System.out.println("\t" + (i + 1) + "." + drinksList.get(i).getName()
+							+ " " + drinksList.get(i).getPrice() + " Baht");
+
+				}
+
+
+				System.out.println("\n\t0.Exit");
+
+
+				// เลือก ออเดอร์
+
+				user.setSelection(sysList.selection("\n\t" + user.getName() + " Please select order : "
+						, "\n\tYou Must Select Number Food!!!!!"
+						, drinksList));
+
+
+				if (user.getSelection() == -1) {
+					System.out.println("\n\tSee You Next Time BRO <3");
+					System.exit(0);
+				}
+
+				else
+				{
+					user.addDrinksList((Drink) drinksList.get(user.getSelection()));
+					user.setBill(user.getBill()+drinksList.get(user.getSelection()).getPrice());
+
+				}
+
+				System.out.println("\n\tYour order have : ");
+
+				for (int i = 0; i < user.getDrinkslist().size(); i++) {
+
+					System.out.println("\t" + (i + 1) + "." + user.getDrinkslist().get(i).getName()
+							+ " " + user.getDrinkslist().get(i).getPrice() + " Baht");
+
+				}
+
+				System.out.println("\tThat will be "+user.getBill()+" Baht");
+
+				System.out.println();
+				System.out.print("\tDo You Want Add Dishes More?? [Y/N] :");
+				con = String.valueOf(new Scanner(System.in).nextLine());
+
+
+
+			} while (con.equals("Y") || con.equals("y"));
+			//
 
 
 
@@ -134,52 +189,51 @@ public class Restaurang
 
 		//ทำรายการอีกครั้งมั้ย
 
-			System.out.println("\n\t****************************");
-
-			//ฟังชั้น ทำซํ้าให้เข้าไป สั่งอาหารใหม่
-			System.out.println("\tDo you want order agian");
-			System.out.println("\t1.Yes / 2.No ");
-
-
-			select = keyboard.next();
-
-
-			int userInput = 1;
-			while (userInput != 0)
-			{
-
-
-				if (select.equals("1"))
-				{
-					userInput--;
-					again = true;
-//					Console.encoding();
-				}
-
-				else if (select.equals("2"))
-				{
-					userInput--;
-					again = false;
-
-					System.out.println("\tThank you for using the service.");
-
-				}
-
-				else
-				{
-					System.out.println("You Must Select 1 Or 2 Only");
-					System.out.println("Do you want order agian");
-					System.out.println("1	.Yes / 2.No ");
-					select = keyboard.nextLine();
-
-				}
+//			System.out.println("\n\t****************************");
 //
+//			//ฟังชั้น ทำซํ้าให้เข้าไป สั่งอาหารใหม่
+//			System.out.println("\tDo you want order agian");
+//			System.out.println("\t1.Yes / 2.No ");
+//
+//
+//			select = keyboard.next();
+//
+//
+//			int userInput = 1;
+//			while (userInput != 0)
+//			{
+//
+//
+//				if (select.equals("1"))
+//				{
+//					userInput--;
+//					again = true;
+////					Console.encoding();
+//				}
+//
+//				else if (select.equals("2"))
+//				{
+//					userInput--;
+//					again = false;
+//
+//					System.out.println("\tThank you for using the service.");
+//
+//				}
+//
+//				else
+//				{
+//					System.out.println("You Must Select 1 Or 2 Only");
+//					System.out.println("Do you want order agian");
+//					System.out.println("1	.Yes / 2.No ");
+//					select = keyboard.nextLine();
+//
+//				}
 
-			} // while select end
+//			} // while select end
 
 
 
-//			System.exit(0);
+			System.exit(0);
 
 		} //while end
 
