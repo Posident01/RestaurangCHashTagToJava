@@ -4,17 +4,17 @@ import java.util.*;
 
 public class MoneyBill
 {
-	public static void cal(int dish, int money, String name, int Price)
+	public static void cal(int bill, int money, String name)
 	{
 		//ฟังก์ชั่นคิดเงิน
 //		Console.Clear();
-		if (money >= dish * Price)
+		if (money >= bill)
 		{
-			somthing(dish, money, name, Price);
+			somthing(bill, money, name);
 		}
-		else if (money <= dish * Price)
+		else if (money <= bill)
 		{
-			System.out.printf("\n\t%2$s Need To Pay %1$s" + "\r\n", dish * Price, name);
+			System.out.printf("\n\t%2$s Need To Pay %1$s" + "\r\n", bill, name);
 			System.out.println("\n\tYour want add money again? ");
 			System.out.print("\n\t1.Yes.\n\t2.No.\n\tYou select 1 or 2: ");
 			int Choseadd = Integer.parseInt(new Scanner(System.in).nextLine());
@@ -28,18 +28,18 @@ public class MoneyBill
 					System.out.print("\n\tHow much will you fill: ");
 					money += Integer.parseInt(new Scanner(System.in).nextLine());
 					System.out.printf("\n\tYour Wallet %1$s Bath" + "\r\n", money);
-				} while (money < dish * Price);
+				} while (money < bill);
 
-				somthing(dish, money, name, Price);
+				somthing(bill, money, name);
 			}
 		}
 	}
 
 
-	public static void somthing(int dish, int money, String name, int Price) {
+	public static void somthing(int dish, int money, String name) {
 
 		int total;
-		total = money - dish * Price;
+		total = money - dish;
 		System.out.printf("\n\t%2$s pay %1$s Baht." + "\r\n", money, name);
 		System.out.printf("\n\t%2$s Get change For %1$s Baht." + "\r\n", total, name);
 		System.out.printf("\n\t%2$s Get %1$s Thousand banknotes Baht." + "\r\n", total / 1000, name);

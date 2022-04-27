@@ -3,8 +3,9 @@ package compro2;
 import compro2.Food.*;
 import Exception.*;
 
-
 import java.util.*;
+
+import static cl.MoneyBill.cal;
 
 public class Restaurang
 {
@@ -105,6 +106,14 @@ public class Restaurang
 			//ฟังชั้น เลือกจาน**
 
 
+			//System.out.println("\n\t****************************");
+
+
+
+			//			System.out.println("You Want Order drink");
+//			System.out.println("1.Yes / 2.No ");
+
+
 			con = "y";
 
 			do
@@ -161,26 +170,7 @@ public class Restaurang
 				System.out.println("\n\t" + user.getName() + " have " + user.getMoney() + " baht");
 
 
-
-
-
-
-
-
-			//System.out.println("\n\t****************************");
-
-//			System.out.println("You Want Order drink");
-//			System.out.println("1.Yes / 2.No ");
-
-
-
-
-
-
-
-
-
-
+			cal(user.getBill(), user.getMoney(), user.getName());
 
 
 
