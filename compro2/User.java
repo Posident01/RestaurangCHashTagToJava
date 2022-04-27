@@ -193,6 +193,15 @@ public String getName(){
         Disheslist.add(menu);
     }
 
+    private List<Drink>  Drinkslist = new ArrayList<>();
+
+    public List<Drink> getDrinkslist(){
+        return this.Drinkslist;
+    }
+
+    public void addDrinksList (Drink menu) {
+        Drinkslist.add(menu);
+    }
 
 
 
